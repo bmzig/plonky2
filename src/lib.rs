@@ -1,8 +1,7 @@
 use ff::PrimeField;
 
 use crate::{
-    fri::FriCommitment,
-    stark::{FriChallenge},
+    fri::{FriCommitment, FriChallenge}
 };
 
 mod fft;
@@ -13,7 +12,6 @@ mod field;
 mod domains;
 mod plonk;
 mod constants;
-mod stark;
 
 /*
 #[derive(Debug)]
@@ -48,7 +46,7 @@ mod plonky2 {
         FriProof,
         polynomial::Polynomial,
         field::goldilocks::Goldilocks,
-        stark::FriChallenge,
+        FriChallenge,
         domains::Domain,
         constants::*,
     };
@@ -154,12 +152,12 @@ mod plonky2 {
 
         // This time, the prover has a public polynomial f(x) and wants to convince somebody that
         // f(w) = y for some w. The verifier wants to check this, but does not want to run f(w)
-        // themselves. Therefore, the prover just makes a single STARK proof for this polynomial.
+        // themselves. Therefore, the prover just makes a single FRI proof for this polynomial.
         let f_x = Polynomial::from_vec(vec![Goldilocks::ONE, Goldilocks::from(5000), Goldilocks::from(50), Goldilocks::ONE, -Goldilocks::from(10), -Goldilocks::from(9), Goldilocks::ZERO, Goldilocks::from(88)]);
 
-        let stark_proof = FriProof::evaluation_proof(&f_x, None);
+        let fri_proof = FriProof::evaluation_proof(&f_x, None);
 
-        let result = stark_proof.verify();
+        let result = fri_proof.verify();
 
         assert!(result.is_valid())
     }

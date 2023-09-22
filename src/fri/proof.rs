@@ -2,8 +2,7 @@ use ff::PrimeField;
 
 use crate::{
     FriProof,
-    fri::FriCommitment,
-    stark::{FriChallenge, VerificationResult},
+    fri::{FriCommitment, FriChallenge, VerificationResult},
     constants::*,
     polynomial::Polynomial,
 };

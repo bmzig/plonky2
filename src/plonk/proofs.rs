@@ -10,8 +10,7 @@ use crate::{
         PermutationCheckProof, 
         PrescribedPermutationCheckProof
     },
-    stark::VerificationResult,
-    fri::FriCommitment,
+    fri::{FriCommitment, VerificationResult}
 };
 
 /*

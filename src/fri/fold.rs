@@ -3,8 +3,7 @@ use blake3::{Hasher, Hash};
 
 use crate::{
     polynomial::Polynomial,
-    fri::FriCommitment,
-    stark::FriChallenge,
+    fri::{FriCommitment, FriChallenge},
     constants::*,
 };
 
